@@ -1,41 +1,45 @@
-import { Header } from "../../components/Header";
-import { Summary } from "../../components/Summary";
-import { SearchForm } from "./components/SearchForm";
-import { PriceHighlight, TransactionContainer, TransactionTable } from "./styles";
+import { useContext } from 'react'
+import { Header } from '../../components/Header'
+import { Summary } from '../../components/Summary'
+import { TransactionsContext } from '../../context/TransactionContext'
+import { dateFormatter, priceFormartter } from '../../utils/formatter'
+import { SearchForm } from './components/SearchForm'
+import {
+  PriceHighlight,
+  TransactionContainer,
+  TransactionTable,
+} from './styles'
 
 export function Transactions() {
-    return (
-        <div>
-            <Header />
-            <Summary />
+  const { transactions } = useContext(TransactionsContext)
 
-            <TransactionContainer>
-            <SearchForm />
-            <TransactionTable>
-                <tbody>
-                    <tr>
-                        <td width='50%'>Desenvolvimento de site</td>
-                        <td>
-                            <PriceHighlight variant="income">
-                                R$ 12.000,00
-                            </PriceHighlight>
-                        </td>
-                        <td>Venda</td>
-                        <td>19/08/2004</td>
-                    </tr>
-                    <tr>
-                        <td width='50%'>Desenvolvimento de site</td>
-                        <td>
-                            <PriceHighlight variant="outcome">
-                                 R$ - 59,00
-                            </PriceHighlight>
-                        </td>
-                        <td>Venda</td>
-                        <td>19/08/2004</td>
-                    </tr>
-                </tbody>
-            </TransactionTable>
-            </TransactionContainer>
-        </div>
-    )
+  return (
+    <div>
+      <Header />
+      <Summary />
+
+      <TransactionContainer>
+        <SearchForm />
+        <TransactionTable>
+          <tbody>
+            {transactions.map((item) => {
+              return (
+                <tr key={item.id}>
+                  <td width="50%">{item.description}</td>
+                  <td>
+                    <PriceHighlight variant={item.type}>
+                      {item.type === 'outcome' && '- '}
+                      {priceFormartter.format(item.price)}
+                    </PriceHighlight>
+                  </td>
+                  <td>{item.category}</td>
+                  <td>{dateFormatter.format(new Date(item.createdAt))}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </TransactionTable>
+      </TransactionContainer>
+    </div>
+  )
 }

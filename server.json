@@ -1,0 +1,44 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento de  sites",
+      "type": "income",
+      "category": "Venda",
+      "price": 1400,
+      "createdAt": "2023-01-26T12:03:34.950Z"
+    },
+    {
+      "id": 2,
+      "description": "Lanche da tarde",
+      "type": "outcome",
+      "category": "Compra",
+      "price": 380,
+      "createdAt": "2023-01-26T12:04:34.950Z"
+    },
+    {
+      "description": "Desenvolvimento web",
+      "price": 10000,
+      "category": "trabalho",
+      "type": "income",
+      "createdAt": "2023-01-30T11:02:37.502Z",
+      "id": 3
+    },
+    {
+      "description": "Supermercado",
+      "price": 1,
+      "category": "compras",
+      "type": "outcome",
+      "createdAt": "2023-01-30T11:52:17.712Z",
+      "id": 4
+    },
+    {
+      "description": "Desenvolvimento app",
+      "price": 4000,
+      "category": "trabalho",
+      "type": "income",
+      "createdAt": "2023-01-30T11:53:11.290Z",
+      "id": 5
+    }
+  ]
+}
